@@ -6,5 +6,5 @@ COPY go.sum ./
 RUN go mod download
 COPY cmd/ .
 COPY . .
-RUN go build -o /cna-server ./cmd/*.go
-CMD [ "/cna-server" ]
+RUN go build -o cna-server ./cmd/*.go
+CMD [ "cna-server" ]

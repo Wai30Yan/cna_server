@@ -3,7 +3,7 @@ package repository
 import (
 	"database/sql"
 
-	"github.com/Wai30Yan/cna-server/model"
+	"github.com/Wai30Yan/cna-server/pkg/model"
 )
 
 type DatabaseRepo interface {

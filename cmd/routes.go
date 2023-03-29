@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/Wai30Yan/cna-server/handlers"
+	"github.com/Wai30Yan/cna-server/pkg/handlers"
 	"github.com/gorilla/mux"
 	gh "github.com/gorilla/handlers"
 )

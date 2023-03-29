@@ -7,7 +7,7 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
-	"github.com/Wai30Yan/cna-server/model"
+	"github.com/Wai30Yan/cna-server/pkg/model"
 )
 
 func (m *Repository) GetAllDoctors(w http.ResponseWriter, r *http.Request) {

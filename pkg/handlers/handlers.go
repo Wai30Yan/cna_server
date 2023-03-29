@@ -7,11 +7,11 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
-	"github.com/Wai30Yan/cna-server/driver"
-	"github.com/Wai30Yan/cna-server/config"
-	"github.com/Wai30Yan/cna-server/model"
-	"github.com/Wai30Yan/cna-server/repository"
-	"github.com/Wai30Yan/cna-server/repository/dbrepo"
+	"github.com/Wai30Yan/cna-server/pkg/driver"
+	"github.com/Wai30Yan/cna-server/pkg/config"
+	"github.com/Wai30Yan/cna-server/pkg/model"
+	"github.com/Wai30Yan/cna-server/pkg/repository"
+	"github.com/Wai30Yan/cna-server/pkg/repository/dbrepo"
 )
 
 var Repo *Repository 

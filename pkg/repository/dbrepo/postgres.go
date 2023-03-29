@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/Wai30Yan/cna-server/model"
+	"github.com/Wai30Yan/cna-server/pkg/model"
 )
 
 func (m *postgresDBRepo) GetAllSchedules() []model.Schedule {

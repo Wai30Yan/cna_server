@@ -7,9 +7,9 @@ import (
 	"os"
 
 	_ "github.com/lib/pq"
-	"github.com/Wai30Yan/cna-server/config"
-	"github.com/Wai30Yan/cna-server/driver"
-	"github.com/Wai30Yan/cna-server/handlers"
+	"github.com/Wai30Yan/cna-server/pkg/config"
+	"github.com/Wai30Yan/cna-server/pkg/driver"
+	"github.com/Wai30Yan/cna-server/pkg/handlers"
 )
 const (
 	dbport = "5432"

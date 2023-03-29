@@ -22,6 +22,7 @@ func main() {
 	user := os.Getenv("USER")
 	password := os.Getenv("PASSWORD")
 	dbname := os.Getenv("USER")
+	port := os.Getenv("PORT")
 
 	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, dbport, user, password, dbname)
 	db, err := driver.ConnectDB(psqlInfo)
@@ -34,8 +35,12 @@ func main() {
 	repo := handlers.NewRepo(&app, db)
 	handlers.NewHandler(repo)
 
+	if port == "" {
+		port = "8080"
+	}
+
 	s := &http.Server{
-		Addr: ":8080",
+		Addr: fmt.Sprintf("0.0.0.0:%s", port),
 		Handler: routes(),
 	}
 

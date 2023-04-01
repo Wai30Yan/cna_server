@@ -84,7 +84,7 @@ func (m *postgresDBRepo) InsertDoctor(doctor *model.Doctor) (*model.Doctor, erro
 }
 
 func (m *postgresDBRepo) UpdateDoctor(id int, doctor *model.Doctor) (*model.Doctor, error) {
-	query := `update doctors set name=$2, specialty=$3 where id=$1`
+	query := `update doctors set name=$2, specialty=$3 where id=$1 returning *`
 
 	row := m.DB.QueryRow(query, id, &doctor.Name, &doctor.Specialty)
 	err := row.Scan(&doctor.ID, &doctor.Name, &doctor.Specialty)

@@ -7,5 +7,5 @@ RUN go mod download
 
 # COPY cmd/ .
 COPY . .
-RUN go build -o /cna-server ./cmd/*.go
+RUN go build -o ./cna-server ./cmd/main.go ./cmd/middleware.go ./cmd/routes.go
 CMD [ "/app/cna-server" ]

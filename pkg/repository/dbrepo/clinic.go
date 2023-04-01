@@ -67,7 +67,7 @@ func (m *postgresDBRepo) InsertClinic(clinic *model.Clinic) (*model.Clinic, erro
 	return clinic, nil
 }
 func (m *postgresDBRepo) UpdateClinic(id int, clinic model.Clinic) (*model.Clinic, error) {
-	query := `update clinics set cname=$2, location=$3 where id=$1`
+	query := `update clinics set cname=$2, location=$3 where id=$1 returning *`
 
 	row := m.DB.QueryRow(query, id, &clinic.Name, &clinic.Location)
 

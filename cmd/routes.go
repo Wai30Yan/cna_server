@@ -11,6 +11,8 @@ import (
 func routes() http.Handler {
 	r := mux.NewRouter()
 
+	admin := r.PathPrefix("/admin").Subrouter()
+	admin.Use(authenticate)
 
 	gh.CORS(
 		gh.AllowedOrigins([]string{"*"}),
@@ -21,11 +23,8 @@ func routes() http.Handler {
 
 	r.Use(preflightMiddleware)
 
-	admin := r.PathPrefix("/admin").Subrouter()
-	admin.Use(authenticate)
 	
 	// Public HTTP GET Requests for doctors, clinics & appointments
-	
 	r.HandleFunc("/doctors", handlers.Repo.GetAllDoctors)
 	r.HandleFunc("/doctor/{id}", handlers.Repo.GetDoctorByID)
 

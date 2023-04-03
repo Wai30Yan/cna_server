@@ -18,11 +18,15 @@ func routes() http.Handler {
 		gh.AllowedOrigins([]string{"*"}),
 		gh.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}),
 	)(r)
+	gh.CORS(
+		gh.AllowedOrigins([]string{"*"}),
+		gh.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}),
+	)(admin)
 
 	// r.Use(mux.CORSMethodMiddleware(r))
 
 	r.Use(preflightMiddleware)
-
+	admin.Use(preflightMiddleware)
 	
 	// Public HTTP GET Requests for doctors, clinics & appointments
 	r.HandleFunc("/doctors", handlers.Repo.GetAllDoctors)

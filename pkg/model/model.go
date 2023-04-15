@@ -42,3 +42,9 @@ type Availability struct {
 	Saturday  bool `json:"saturday"`
 	Sunday    bool `json:"sunday"`
 }
+
+type Admin struct {
+	ID int `json:"id"`
+	UserName string `json:"username"`
+	Password string `json:"password"`
+}

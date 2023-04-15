@@ -33,4 +33,9 @@ type DatabaseRepo interface {
 	InsertClinic(clinic *model.Clinic) (*model.Clinic, error)
 	UpdateClinic(id int, clinic model.Clinic) (*model.Clinic, error)
 	DeleteClinic(id int) (*sql.Result, error)
+
+	// Admin
+	SignUp(username, password string) (*model.Admin, error)
+	LogIn(username, password string) (*model.Admin, error)
+	LogOut()
 }

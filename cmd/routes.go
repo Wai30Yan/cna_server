@@ -5,7 +5,6 @@ import (
 
 	"github.com/Wai30Yan/cna-server/pkg/handlers"
 	"github.com/gorilla/mux"
-	gh "github.com/gorilla/handlers"
 )
 
 func routes() http.Handler {
@@ -14,19 +13,19 @@ func routes() http.Handler {
 	admin := r.PathPrefix("/admin").Subrouter()
 	admin.Use(authenticate)
 
-	gh.CORS(
-		gh.AllowedOrigins([]string{"*"}),
-		gh.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}),
-	)(r)
-	gh.CORS(
-		gh.AllowedOrigins([]string{"*"}),
-		gh.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}),
-	)(admin)
+	// gh.CORS(
+	// 	gh.AllowedOrigins([]string{"*"}),
+	// 	gh.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}),
+	// )(r)
+	// gh.CORS(
+	// 	gh.AllowedOrigins([]string{"*"}),
+	// 	gh.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}),
+	// )(admin)
 
-	// r.Use(mux.CORSMethodMiddleware(r))
+	r.Use(mux.CORSMethodMiddleware(r))
 
-	r.Use(preflightMiddleware)
-	admin.Use(preflightMiddleware)
+	// r.Use(preflightMiddleware)
+	// admin.Use(preflightMiddleware)
 	
 	// Public HTTP GET Requests for doctors, clinics & appointments
 	r.HandleFunc("/doctors", handlers.Repo.GetAllDoctors)
